@@ -5,6 +5,19 @@
   "scripts": {
     "start": "node src/api/server.js",
     "dev": "npx nodemon src/api/server.js",
+
+    "migrate:marca": "npx sequelize-cli db:migrate --name create-marca.js",
+    "migrate:carro": "npx sequelize-cli db:migrate --name create-carro.js",
+    "migrate:usuario": "npx sequelize-cli db:migrate --name create-usuario.js",
+    "migrate": "npm run migrate:marca && npm run migrate:carro && npm run migrate:usuario",
+
+    "seed:marca": "npx sequelize-cli db:seed --seed demo-marca.js",
+    "seed:carro": "npx sequelize-cli db:seed --seed demo-carro.js",
+    "seed:usuario": "npx sequelize-cli db:seed --seed demo-usuario.js",
+    "seed": "npm run seed:marca && npm run seed:carro && npm run seed:usuario",
+
+    "reset": "npx sequelize-cli db:migrate:undo:all && npx sequelize-cli db:seed:undo:all",
+    
     "test": "jest",
     "test:watch": "jest --watchAll",
     "test:coverage": "jest --coverage"
@@ -18,11 +31,13 @@
   "description": "",
   "dependencies": {
     "bcryptjs": "^3.0.2",
+    "dotenv": "^16.4.7",
     "express": "^5.1.0",
     "express-validator": "^7.2.1",
     "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.14.0",
     "sequelize": "^6.37.7",
+    "uuid": "^11.1.0",
     "winston": "^3.17.0"
   },
   "devDependencies": {

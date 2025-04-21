@@ -6,7 +6,7 @@ const authMiddleware = (req, res, next) => {
     if (!token) return res.status(401).json({ message: 'Acceso denegado' });
 
     try {
-        const verificado = jwt.verify(token.replace('Bearer ', ''), process.env.JWT_SECRET || "tokenjaja123");
+        const verificado = jwt.verify(token.replace('Bearer ', ''), process.env.JWT_SECRET);
         req.usuario = verificado;
         next();
     } catch (error) {

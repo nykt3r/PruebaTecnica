@@ -38,7 +38,7 @@ const ingresarUsuario = async (req, res, next) => {
             throw error;
         }
 
-        const token = jwt.sign({ id: usuarioIngresar.id, email: usuarioIngresar.email }, process.env.JWT_SECRET || "tokenjaja123", { expiresIn: '1h' });
+        const token = jwt.sign({ id: usuarioIngresar.id, email: usuarioIngresar.email }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
         res.json({
             data: { token },
